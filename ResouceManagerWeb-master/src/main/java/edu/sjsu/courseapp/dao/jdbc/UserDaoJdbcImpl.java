@@ -17,11 +17,11 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
-import edu.sjsu.courseapp.dao.CloudDAO;
-import edu.sjsu.courseapp.domain.Cloud;
+import edu.sjsu.courseapp.dao.UserDAO;
+import edu.sjsu.courseapp.domain.User;
 
-@Repository("CloudDaoJdbcImpl")
-public class CloudDaoJdbcImpl implements CloudDAO {
+@Repository("UserDaoJdbcImpl")
+public class UserDaoJdbcImpl implements UserDAO {
 	@Autowired
 	@Qualifier("dataSource")
 	private DataSource dataSource;
@@ -30,78 +30,80 @@ public class CloudDaoJdbcImpl implements CloudDAO {
 	private NamedParameterJdbcTemplate namedTemplate;
 	private SimpleJdbcInsert jdbcInsert;
 	
-	private CloudRowMapper cloudRowMapper;
+	private UserRowMapper userRowMapper;
 
 
 	@PostConstruct
 	public void setup() {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 		namedTemplate = new NamedParameterJdbcTemplate(dataSource);
-		jdbcInsert = new SimpleJdbcInsert(dataSource).withTableName("cloud")
-				    .usingColumns("cloudid", "name","publicip","privateip", "geolocation");
-		 cloudRowMapper = new CloudRowMapper();
+		jdbcInsert = new SimpleJdbcInsert(dataSource).withTableName("user")
+				    .usingColumns("userid", "name","creditcard","emailid", "phone", "totalbill" , "paidbill");
+		userRowMapper = new UserRowMapper();
 
 	}
 
 	@Override
-	public int getCloudCount() {
-		String sql = "select count(*) from Cloud";
+	public int getUserCount() {
+		String sql = "select count(*) from user";
 		return jdbcTemplate.queryForInt(sql);
 	}
 
-	public void insertCloud(List<Cloud> listcloud) {
-		for (Cloud cloud : listcloud) {
+	public void insertUser(List<User> listuser) {
+		for (User user : listuser) {
 			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("name", cloud.getName());
-			map.put("publicip", cloud.getPublicip());
-			map.put("privateip",cloud.getPrivateip());
-			map.put("geolocation",cloud.getGeolocation());
+			map.put("name", user.getName());
+			map.put("creditcard", user.getCreditcard());
+			map.put("emailid",user.getEmailid());
+			map.put("phone",user.getPhone());
+			map.put("totalbill",user.getTotalbill());
+			map.put("paidbill",user.getPaidbill());
 			int newId = jdbcInsert.execute(map);
-			cloud.setCloudid(newId);
+			user.setUserid(newId);
 		}
 	}
 	
 
 	@Override
-	public String findCloudNameById(int id) {
-		String sql = "select name from cloud where cloudid=?";
+	public String findUserNameById(int id) {
+		String sql = "select name from user where userid=?";
 		return jdbcTemplate.queryForObject(sql, String.class, id);
 	}
 
 	@Override
-	public Cloud findCloudByName(String cloudName) {
-		int cloudsFound;
-		String sql = "select * from cloud where name=?";
-		List<Cloud> cloudList = jdbcTemplate.query(sql, cloudRowMapper,
-				cloudName);
+	public User findUserByName(String userName) {
+		int usersFound;
+		String sql = "select * from user where name=?";
+		List<User> userList = jdbcTemplate.query(sql, userRowMapper,
+				userName);
 
-		cloudsFound = cloudList.size();
-		if (cloudsFound == 1) {
+		usersFound = userList.size();
+		if (usersFound == 1) {
 
-			return cloudList.get(0);
+			return userList.get(0);
 
-		} else if (cloudsFound == 0) {
+		} else if (usersFound == 0) {
 
 			return null;
 
 		}
-		return (Cloud) cloudList;
+		return (User) userList;
 		// throw new
-		// ProductDaoException("Multiple Clouds Found with Same Name");
+		// ProductDaoException("Multiple users Found with Same Name");
 	}
 
 
 	@Override
-	public void deleteCloud(int id) {
+	public void deleteUser(int id) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public List<Cloud> getCloudallList() {
-		String sql = "select * from cloud";
-		List<Cloud> cloudList = jdbcTemplate.query(sql, cloudRowMapper);
-		return cloudList;
+	public List<User> getUserallList() {
+		String sql = "select * from user";
+		List<User> userList = jdbcTemplate.query(sql, userRowMapper);
+		return userList;
 	}
 
 	

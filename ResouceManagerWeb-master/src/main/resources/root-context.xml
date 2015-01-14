@@ -32,4 +32,13 @@
     <bean id="cloudServ" class="edu.sjsu.courseapp.dao.jdbc.CloudDaoJdbcImpl">
     </bean>	
     
+    <bean id="instanceServ" class="edu.sjsu.courseapp.dao.jdbc.InstanceDaoJdbcImpl">
+    </bean>	
+
+    <bean id="userServ" class="edu.sjsu.courseapp.dao.jdbc.UserDaoJdbcImpl">
+    </bean>	
+
+    <bean id="rateServ" class="edu.sjsu.courseapp.dao.jdbc.RateDaoJdbcImpl">
+    </bean>	
+    
 </beans>

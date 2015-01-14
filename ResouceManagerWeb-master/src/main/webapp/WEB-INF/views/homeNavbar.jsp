@@ -36,7 +36,10 @@ background-color:pink;
    
   <ul style="background-color:purple">
 
-		<li><a href="${context}/showWheretoBuy">Product</a>
+		<li><a href="${context}/clouds">Clouds</a></li>
+		<li><a href="${context}/instances">Instances</a></li>
+		<li><a href="${context}/users">Users</a></li>
+		<li><a href="${context}/rates">Rates</a></li>
 	
 	
 	

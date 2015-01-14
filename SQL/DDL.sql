@@ -51,6 +51,7 @@ create table user (userid INT NOT NULL, primary key(userid),
  phone varchar(20), totalbill double, paidbill double);
 
 insert into user values(1, "Sudip" , "1234567890" , "sudip@test.com", "1234567890" , 0.0, 0.0);
+insert into user values(2, "Kumar" , "9876543210" , "kumar@test.com", "9876543210" , 0.0, 0.0);
 
 select * from user ;
 

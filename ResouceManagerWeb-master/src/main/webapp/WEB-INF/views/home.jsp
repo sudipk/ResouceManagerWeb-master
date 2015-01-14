@@ -37,22 +37,36 @@ body{
                 padding-left: 15px;
             }
 </style>
-	<title>Home page</title>
+	<title>Mobile Cloud Resource Mangement System</title>
 	<link rel="stylesheet" type="text/css" href="../resources/css/nav.css" />
 </head>
 <body>
 <section>
 
-<%@ include file="./homeNavbar.jsp"%>
-
 <center>
-<h1>Welcome </h1>
+<h1><font size="8">Welcome to Mobile Cloud Resource Mangement System </h1>
 	
 <br>
 <br>
 <br>
-<h4 style="background-color:White; text-align:center;color:#3B5998; font-family: Times New Roman;font-size:9;">2014  Inc.</h4>
+<tr>
+<font size="6">
+<td><a href="${context}/clouds">Clouds</a></td>
+<td><a href="${context}/instances">Instances</a><td>
+<td><a href="${context}/users">Users</a><td>
+<td><a href="${context}/rates">Rates</a><td>
+</tr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</center>
+<h4 style="background-color:White; text-align:center;color:#3B5998; font-family: Times New Roman;font-size:9;">Cloud Technologies Course CMPE 281 at SJSU</h4>
 </section>
+
+
 </center>
 </div>
 </body>
