@@ -2,12 +2,20 @@
 <%@ page session="false" %>
 <c:set var="context" scope="request" value="<%= request.getContextPath()%>" />
 <html>
+<!-- Bootstrap CSS -->
+<link href="${context}/resources/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="${context}/resources/includes/css/bootstrap-glyphicons.css"
+	rel="stylesheet">
+<!-- Custom CSS -->
+<link href="${context}/resources/includes/css/styles.css"
+	rel="stylesheet">
+
 <head>
 <style>
 body{
-          
-               
-                background-color: lightyellow;
+               //background-image: url("${context}/resources/images/MobileCloudComputing.png");
+                background-color: lightblue;
                 //border: 3px dotted black;
                 margin: 10px;
                 padding-bottom: 20px;
@@ -15,6 +23,7 @@ body{
                 margin:auto;
             }
             section {
+            	//background-image: url("${context}/resources/images/MobileCloudComputing.png");
                 background-color: white;
                 //border: 2px solid black;
                 width: 700px;
@@ -36,26 +45,32 @@ body{
                 margin: 0; /* all four sides */
                 padding-left: 15px;
             }
+            a {
+    				font-size:200%;
+			}
 </style>
 	<title>Mobile Cloud Resource Mangement System</title>
 	<link rel="stylesheet" type="text/css" href="../resources/css/nav.css" />
+	
 </head>
-<body>
+<body background="${context}/resources/images/MobileCloudComputing.png">
 <section>
 
-<center>
-<h1><font size="8">Welcome to Mobile Cloud Resource Mangement System </h1>
+<center >
+<h1><font color="darkblue" size="10">Mobile Cloud Resource Mangement System</font> </h1>
 	
 <br>
 <br>
 <br>
+<table class="table table-hover">
 <tr>
-<font size="6">
-<td><a href="${context}/clouds">Clouds</a></td>
-<td><a href="${context}/instances">Instances</a><td>
-<td><a href="${context}/users">Users</a><td>
-<td><a href="${context}/rates">Rates</a><td>
+<td ><a href="${context}/clouds">Clouds</a>&nbsp&nbsp&nbsp&nbsp</td>
+<td><a href="${context}/instances">Instances</a>&nbsp&nbsp&nbsp&nbsp</td>
+<td><a href="${context}/users">Users & Billing</a>&nbsp&nbsp&nbsp&nbsp</td>
+<td><a href="${context}/rates">Cost</a>&nbsp&nbsp&nbsp&nbsp</td>
 </tr>
+</font>
+</table>
 <br>
 <br>
 <br>
@@ -63,7 +78,7 @@ body{
 <br>
 <br>
 </center>
-<h4 style="background-color:White; text-align:center;color:#3B5998; font-family: Times New Roman;font-size:9;">Cloud Technologies Course CMPE 281 at SJSU</h4>
+<h4 style="background-color:White; text-align:center;color:#3B5998; font-family: Times New Roman;font-size:10;">Cloud Technologies Course CMPE 281 at SJSU</h4>
 </section>
 
 
